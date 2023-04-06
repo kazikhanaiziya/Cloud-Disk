@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getFiles} from "../../actions/file";
+import {createDir, getFiles} from "../../actions/file";
 import FileList from "./fileList/FileList";
 import './disk.css'
 
@@ -12,11 +12,15 @@ const Disk = () => {
         dispatch(getFiles(currentDir))
     }, [currentDir])
 
+    function createDirHandler() {
+        dispatch(createDir(currentDir,  'asfasfasfsaf'))
+    }
+
     return (
         <div className="disk">
             <div className="disk__btns">
                 <button className="disk__back">Назад</button>
-                <button className="disk__create">Создать папку</button>
+                <button className="disk__create" onClick={() => createDirHandler()}>Создать папку</button>
             </div>
             <FileList/>
         </div>
