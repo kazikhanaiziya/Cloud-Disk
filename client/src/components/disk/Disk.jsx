@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {createDir, getFiles} from "../../actions/file";
 import FileList from "./fileList/FileList";
 import './disk.css'
+import {setPopupDisplay} from "../../reducers/fileReducer";
 
 const Disk = () => {
     const dispatch = useDispatch()
@@ -12,8 +13,8 @@ const Disk = () => {
         dispatch(getFiles(currentDir))
     }, [currentDir])
 
-    function createDirHandler() {
-        dispatch(createDir(currentDir,  'asfasfasfsaf'))
+    function showPopupHandler() {
+        dispatch(setPopupDisplay( 'flex'))
     }
 
     return (
