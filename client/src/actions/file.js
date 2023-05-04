@@ -1,5 +1,5 @@
 import axios from "axios"
-import {setFiles} from "../reducers/fileReducer";
+import {addFile, setFiles} from "../reducers/fileReducer";
 
 export function getFiles(dirId) {
     return async dispatch => {
@@ -15,7 +15,7 @@ export function getFiles(dirId) {
     }
 }
 
-export function createDir(dirId, name) {
+export function creatDir(dirId, name) {
     return async dispatch => {
         try {
             const response = await axios.post(`http://localhost:5000/api/files`, {
@@ -26,7 +26,6 @@ export function createDir(dirId, name) {
                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
             })
             dispatch(addFile(response.data))
-            // console.log(response.data)
         } catch (e) {
             alert(e.response.data.message)
         }
